@@ -1,0 +1,29 @@
+{
+  "name": "mern_emission_tracker",
+  "version": "1.0.0",
+  "description": "Emission tracker built with the MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/garethcdobson/MERN_Emission_Tracker.git"
+  },
+  "author": "Gareth Dobson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/garethcdobson/MERN_Emission_Tracker/issues"
+  },
+  "homepage": "https://github.com/garethcdobson/MERN_Emission_Tracker#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.14"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
