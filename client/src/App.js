@@ -4,12 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import AppNavbar from './components/AppNavbar';
+import EmissionTable from './components/EmissionTable';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <AppNavbar />
+        <EmissionTable />
       </div>
     );
   }
