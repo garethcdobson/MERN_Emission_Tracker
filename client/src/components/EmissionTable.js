@@ -1,14 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Button, Form, FormGroup, Label, Input, Table } from 'reactstrap';
-import { v4 as uuid } from 'uuid';
+import { connect } from 'react-redux';
+import { getItems } from '../actions/itemActions';
+import PropTypes from 'prop-types';
 
 class EmissionTable extends Component {
-    state = {
-        items: [
-            { id: uuid(), name: 'Georgia', description: 'Cycling to work', transport: 'Bike', distance: 3, emissions: 0 },
-            { id: uuid(), name: 'Andy', description: 'Drive to work', transport: 'Car', distance: 20, emissions: 100 },
-            { id: uuid(), name: 'Jerry', description: 'Flying to France for work', transport: 'Plane', distance: 400, emissions: 500 },
-        ]
+
+    componentDidMount() {
+        this.props.getItems();
     }
 
     handleSubmit() {
@@ -16,7 +15,7 @@ class EmissionTable extends Component {
     }
 
     render() {
-        const { items } = this.state;
+        const { items } = this.props.item;
 
         return(
             <Fragment>
@@ -86,4 +85,13 @@ class EmissionTable extends Component {
     };
 };
 
-export default EmissionTable;
+EmissionTable.propTypes = {
+    getItems: PropTypes.func.isRequired,
+    item: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+    item: state.item,
+})
+
+export default connect(mapStateToProps, { getItems })(EmissionTable);
