@@ -1,13 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import { Button, Form, FormGroup, Label, Input, Table } from 'reactstrap';
 import { connect } from 'react-redux';
-import { getItems } from '../actions/itemActions';
+import { getItems, deleteItem } from '../actions/itemActions';
 import PropTypes from 'prop-types';
 
 class EmissionTable extends Component {
 
     componentDidMount() {
         this.props.getItems();
+    }
+
+    handleDeleteItem = (id) => {
+        this.props.deleteItem(id);
     }
 
     handleSubmit() {
@@ -22,6 +26,7 @@ class EmissionTable extends Component {
                 <Table hover>
                     <thead>
                         <tr>
+                        <th>Delete</th>
                         <th>Entry</th>
                         <th>Name</th>
                         <th>Description</th>
@@ -31,8 +36,15 @@ class EmissionTable extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {items.map(({ name, description, transport, distance, emissions }, index) => (
+                        {items.map(({ id, name, description, transport, distance, emissions }, index) => (
                             <tr>
+                                <th>
+                                    <Button 
+                                        onClick={this.handleDeleteItem.bind(this, id)}
+                                    >
+                                        &times;
+                                    </Button>
+                                </th>
                                 <th scope="row">{index + 1}</th>
                                 <td>{name}</td>
                                 <td>{description}</td>
@@ -94,4 +106,7 @@ const mapStateToProps = (state) => ({
     item: state.item,
 })
 
-export default connect(mapStateToProps, { getItems })(EmissionTable);
+export default connect(
+    mapStateToProps, 
+    { getItems, deleteItem }
+)(EmissionTable);
