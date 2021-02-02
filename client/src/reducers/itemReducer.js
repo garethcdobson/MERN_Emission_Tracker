@@ -1,12 +1,7 @@
-import { v4 as uuid } from 'uuid';
-import { GET_ITEMS, ADD_ITEMS, DELETE_ITEM } from '../actions/types';
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM } from '../actions/types';
 
 const initialState = {
-    items: [
-        { id: uuid(), name: 'Georgia', description: 'Cycling to work', transport: 'Bike', distance: 3, emissions: 0 },
-        { id: uuid(), name: 'Andy', description: 'Drive to work', transport: 'Car', distance: 20, emissions: 100 },
-        { id: uuid(), name: 'Jerry', description: 'Flying to France for work', transport: 'Plane', distance: 400, emissions: 500 },
-    ]
+    items: []
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -20,7 +15,12 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 items: state.items.filter(item => item.id !== action.payload)
-            }
+            };
+        case ADD_ITEM:
+            return {
+                ...state,
+                items: [action.payload, ...state.items]
+            };
         default:
             return state;
     }

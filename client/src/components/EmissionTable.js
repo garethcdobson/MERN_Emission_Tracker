@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Button, Form, FormGroup, Label, Input, Table } from 'reactstrap';
+import { Button, Table } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../actions/itemActions';
 import PropTypes from 'prop-types';
@@ -12,10 +12,6 @@ class EmissionTable extends Component {
 
     handleDeleteItem = (id) => {
         this.props.deleteItem(id);
-    }
-
-    handleSubmit() {
-        alert("SUBMITTED");
     }
 
     render() {
@@ -31,8 +27,8 @@ class EmissionTable extends Component {
                         <th>Name</th>
                         <th>Description</th>
                         <th>Transport</th>
-                        <th>Distance</th>
-                        <th>Emissions</th>
+                        <th>Distance (km)</th>
+                        <th>CO2 Emissions (kgs)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,43 +51,6 @@ class EmissionTable extends Component {
                         ))}
                     </tbody>
                 </Table>
-
-                <Form onSubmit={this.handleSubmit} className="m-5">
-                    <FormGroup>
-                        <Label for="name">Name</Label>
-                        <Input type="name" name="name" id="name" placeholder="Name" />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="date">Date</Label>
-                        <Input
-                            type="date"
-                            name="date"
-                            id="date"
-                            placeholder="date placeholder"
-                        />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="description">Description (Optional)</Label>
-                        <Input type="textarea" name="description" id="description" placeholder="Description" />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="transport">Transport</Label>
-                        <Input type="select" name="transport" id="transport">
-                            <option>Bicycle</option>
-                            <option>Car</option>
-                            <option>Electric Car</option>
-                            <option>Electric Bicycle / Scooter</option>
-                            <option>Plane</option>
-                            <option>Train</option>
-                            <option>Bus</option>
-                        </Input>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="distance">Distance</Label>
-                        <Input type="number" name="distance" id="distance" placeholder="0.00km" />
-                    </FormGroup>
-                    <Button type="submit">Submit</Button>
-                </Form>
             </Fragment>
         )
     };
