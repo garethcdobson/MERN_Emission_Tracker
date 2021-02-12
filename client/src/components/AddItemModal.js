@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { 
     Button, 
     Form, 
+    FormFeedback,
     FormGroup, 
     Label, 
     Modal, 
@@ -18,46 +19,88 @@ class ItemModal extends Component {
         modal: false, 
         name: '', 
         description: '', 
-        transport: 'Bicycle', 
-        distance: 0, 
-        emissions: 0
+        date: '',
+        transport: '', 
+        distance: null, 
+        emissions: null,
+        validate: {
+            nameState: null,
+            dateState: null,
+            transportState: null,
+            distanceState: null,
+        },
+        submitEnabled: false,
     }
 
     toggle = () => {
         this.setState({
             modal: !this.state.modal,
         });
+        this.resetState();
     }
 
     onChange = (e) => {
+        const { dateState, nameState, distanceState, transportState } = this.state.validate;
+
         this.setState({
             [e.target.name]: e.target.value
         });
+
+        if(e.target.name === 'name'){
+            this.validateName(e);
+        }
+
+        if(e.target.name === 'date'){
+            this.validateDate(e);
+        }
+
+        if(e.target.name === 'transport'){
+            this.validateTransport(e);
+        }
+
+        if(e.target.name === 'distance'){
+            this.validateDistance(e);
+        }
+
+        if(dateState && nameState && transportState && distanceState){
+            this.setState({ submitEnabled: true })
+        } else {
+            this.setState({ submitEnabled: false })
+        }
     }
 
     resetState = () => {
         this.setState({
             name: '', 
             description: '', 
-            transport: 'Bicycle', 
-            distance: 0, 
-            emissions: 0
+            date: '',
+            transport: '', 
+            distance: null, 
+            emissions: null,
+            validate: {
+                nameState: null,
+                dateState: null,
+                transportState: null,
+                distanceState: null
+            },
+            submitEnabled: false,
         });
     }
 
     onSubmit = (e) => {
         e.preventDefault();
 
-        const { name, description, transport, distance, emissions } = this.state;
+        const { name, description, transport, date, distance, emissions } = this.state;
 
         const newItem = {
             id: uuid(),
             name: name,
+            date: date,
             description: description, 
             transport: transport, 
             distance: distance, 
             emissions: emissions,
-        }
+        };
 
         this.props.addItem(newItem);
 
@@ -66,7 +109,60 @@ class ItemModal extends Component {
         this.toggle();
     }
 
+    validateName(e) {
+        const nameRex = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/;
+        const { validate } = this.state;
+    
+        if (nameRex.test(e.target.value)) {
+            validate.nameState = true
+        } else {
+            validate.nameState = false
+        }
+
+        this.setState({ validate })
+    }
+
+    validateDate(e) {
+        const dateRex = /^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/;
+        const { validate } = this.state;
+    
+        if (dateRex.test(e.target.value)) {
+            validate.dateState = true
+        } else {
+            validate.dateState = false
+        }
+
+        this.setState({ validate })
+    }
+
+    validateTransport(e) {
+        const { validate } = this.state;
+    
+        if (e.target.value !== '') {
+            validate.transportState = true
+        } else {
+            validate.transportState = false
+        }
+
+        this.setState({ validate })
+    }
+
+    validateDistance(e) {
+        const distanceRex = /^[+]?\d+([.]\d+)?$/;
+        const { validate } = this.state;
+    
+        if (distanceRex.test(e.target.value)) {
+            validate.distanceState = true
+        } else {
+            validate.distanceState = false
+        }
+
+        this.setState({ validate })
+    }
+
     render() {
+        const { submitEnabled } = this.state;
+
         return(
             <div>
                 <Button
@@ -83,23 +179,36 @@ class ItemModal extends Component {
                     <ModalBody>
                     <Form onSubmit={this.onSubmit}>
                         <FormGroup>
-                            <Label for="name">Name</Label>
+                            <Label for="name">Name *</Label>
                             <Input 
                                 type="name" 
                                 name="name" 
                                 id="name" 
                                 placeholder="Name" 
-                                onChange={this.onChange} />
+                                onChange={this.onChange} 
+                                valid={this.state.validate.nameState}
+                                invalid={this.state.validate.nameState === false}
+                            />
+                            <FormFeedback valid></FormFeedback>
+                            <FormFeedback invalid>
+                                Please enter a valid name.
+                            </FormFeedback>
                         </FormGroup>
                         <FormGroup>
-                            <Label for="date">Date</Label>
+                            <Label for="date">Date *</Label>
                             <Input
                                 type="date"
                                 name="date"
                                 id="date"
                                 placeholder="date placeholder"
                                 onChange={this.onChange}
+                                valid={this.state.validate.dateState}
+                                invalid={this.state.validate.dateState === false}
                             />
+                            <FormFeedback valid></FormFeedback>
+                            <FormFeedback invalid>
+                                Please enter a valid date between 1900-2099.
+                            </FormFeedback>
                         </FormGroup>
                         <FormGroup>
                             <Label for="description">Description (Optional)</Label>
@@ -112,8 +221,16 @@ class ItemModal extends Component {
                             />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="transport">Transport</Label>
-                            <Input type="select" name="transport" id="transport" onChange={this.onChange}>
+                            <Label for="transport">Transport *</Label>
+                            <Input 
+                                type="select" 
+                                name="transport" 
+                                id="transport" 
+                                onChange={this.onChange}   
+                                valid={this.state.validate.transportState}
+                                invalid={this.state.validate.transportState === false}
+                                multiple
+                            >
                                 <option>Bicycle</option>
                                 <option>Car</option>
                                 <option>Electric Car</option>
@@ -122,18 +239,28 @@ class ItemModal extends Component {
                                 <option>Train</option>
                                 <option>Bus</option>
                             </Input>
+                            <FormFeedback valid></FormFeedback>
+                            <FormFeedback invalid>
+                                Please select a transport type.
+                            </FormFeedback>
                         </FormGroup>
                         <FormGroup>
-                            <Label for="distance">Distance</Label>
+                            <Label for="distance">Distance (km) *</Label>
                             <Input 
                                 type="number" 
                                 name="distance" 
                                 id="distance" 
-                                placeholder="0.00km" 
+                                placeholder={0} 
                                 onChange={this.onChange}
+                                valid={this.state.validate.distanceState}
+                                invalid={this.state.validate.distanceState === false}
                             />
+                            <FormFeedback valid></FormFeedback>
+                            <FormFeedback invalid>
+                                Please enter a valid distance.
+                            </FormFeedback>
                         </FormGroup>
-                        <Button color="dark" type="submit">Submit</Button>
+                        <Button color="dark" type="submit" disabled={!submitEnabled}>Submit</Button>
                     </Form>
                     </ModalBody>
                 </Modal>

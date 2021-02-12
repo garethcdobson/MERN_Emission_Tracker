@@ -22,17 +22,18 @@ class EmissionTable extends Component {
                 <Table hover>
                     <thead>
                         <tr>
-                        <th>Delete</th>
-                        <th>Entry</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Transport</th>
-                        <th>Distance (km)</th>
-                        <th>CO2 Emissions (kgs)</th>
+                            <th>Delete</th>
+                            <th>Entry</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Transport</th>
+                            <th>Distance (km)</th>
+                            <th>CO2 Emissions (kgs)</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {items.map(({ id, name, description, transport, distance, emissions }, index) => (
+                        {items.map(({ id, name, description, transport, distance, emissions, date }, index) => (
                             <tr>
                                 <th>
                                     <Button 
@@ -47,6 +48,7 @@ class EmissionTable extends Component {
                                 <td>{transport}</td>
                                 <td>{distance}</td>
                                 <td>{emissions}</td>
+                                <td>{date}</td>
                             </tr>
                         ))}
                     </tbody>
