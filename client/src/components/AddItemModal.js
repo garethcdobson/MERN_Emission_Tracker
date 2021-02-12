@@ -12,7 +12,6 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addItem } from '../actions/itemActions';
-import { v4 as uuid } from 'uuid';
 
 class ItemModal extends Component {
     state = {
@@ -22,7 +21,7 @@ class ItemModal extends Component {
         date: '',
         transport: '', 
         distance: null, 
-        emissions: null,
+        emissions: 0,
         validate: {
             nameState: null,
             dateState: null,
@@ -36,12 +35,11 @@ class ItemModal extends Component {
         this.setState({
             modal: !this.state.modal,
         });
+
         this.resetState();
     }
 
     onChange = (e) => {
-        const { dateState, nameState, distanceState, transportState } = this.state.validate;
-
         this.setState({
             [e.target.name]: e.target.value
         });
@@ -62,7 +60,12 @@ class ItemModal extends Component {
             this.validateDistance(e);
         }
 
-        if(dateState && nameState && transportState && distanceState){
+        if(
+            this.state.validate.dateState 
+            && this.state.validate.nameState 
+            && this.state.validate.transportState 
+            && this.state.validate.distanceState
+        ){
             this.setState({ submitEnabled: true })
         } else {
             this.setState({ submitEnabled: false })
@@ -76,7 +79,7 @@ class ItemModal extends Component {
             date: '',
             transport: '', 
             distance: null, 
-            emissions: null,
+            emissions: 0,
             validate: {
                 nameState: null,
                 dateState: null,
@@ -93,7 +96,6 @@ class ItemModal extends Component {
         const { name, description, transport, date, distance, emissions } = this.state;
 
         const newItem = {
-            id: uuid(),
             name: name,
             date: date,
             description: description, 
