@@ -25,6 +25,9 @@ const ItemSchema = new Schema ({
     emissions: {
         type: Number,
         required: true,
+    },
+    description: {
+        type: String,
     }
 });
 

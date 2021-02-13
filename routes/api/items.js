@@ -22,6 +22,7 @@ router.post('/', (req, res) => {
         transport: req.body.transport,
         distance: req.body.distance,
         emissions: req.body.emissions,
+        description: req.body.description
     });
 
     newItem.save().then(item => res.json(item));
