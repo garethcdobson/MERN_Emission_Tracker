@@ -3,6 +3,7 @@ import { Button, Container, Table } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../actions/itemActions';
 import PropTypes from 'prop-types';
+import trashIcon from '../assets/trash-icon.png';
 
 class EmissionTable extends Component {
 
@@ -18,40 +19,43 @@ class EmissionTable extends Component {
         const { items } = this.props.item;
 
         return(
-            <Table responsive bordered hover>
-                <thead>
-                    <tr>
-                        <th>Delete</th>
-                        <th>Entry</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Transport</th>
-                        <th>Distance (km)</th>
-                        <th>CO2 Emissions (kgs)</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {items.map(({ _id, name, description, transport, distance, emissions, date }, index) => (
+            <div className="emission-table">
+                <Table striped size="sm" responsive hover>
+                    <thead>
                         <tr>
-                            <th>
-                                <Button 
-                                    onClick={this.handleDeleteItem.bind(this, _id)}
-                                >
-                                    &times;
-                                </Button>
-                            </th>
-                            <th scope="row">{index + 1}</th>
-                            <td>{name}</td>
-                            <td>{description}</td>
-                            <td>{transport}</td>
-                            <td>{distance}</td>
-                            <td>{emissions}</td>
-                            <td>{date}</td>
+                            <th>Entry</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Transport</th>
+                            <th>Distance (km)</th>
+                            <th>CO2 Emissions (kgs)</th>
+                            <th>Date</th>
+                            <th></th>
                         </tr>
-                    ))}
-                </tbody>
-            </Table>
+                    </thead>
+                    <tbody>
+                        {items.map(({ _id, name, description, transport, distance, emissions, date }, index) => (
+                            <tr>
+                                <td scope="row">{index + 1}</td>
+                                <td>{name}</td>
+                                <td>{description}</td>
+                                <td>{transport}</td>
+                                <td>{distance}</td>
+                                <td>{emissions}</td>
+                                <td>{date}</td>
+                                <td>
+                                    <Button 
+                                        onClick={this.handleDeleteItem.bind(this, _id)}
+                                        className="delete-item-button"
+                                    >
+                                        <img src={trashIcon} alt="delete item" height="30px" />
+                                    </Button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </div>
         )
     };
 };

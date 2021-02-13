@@ -20,8 +20,10 @@ class App extends Component {
           <AppNavbar />
           <AppSidebar />
           <Container className="content">
-              <AddItemModal />
-              <EmissionTable />
+              <div class="dashboard">
+                <AddItemModal />
+                <EmissionTable />
+              </div>
           </Container>
         </div>
       </Provider>

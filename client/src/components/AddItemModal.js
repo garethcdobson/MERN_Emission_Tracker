@@ -169,9 +169,11 @@ class ItemModal extends Component {
             <div>
                 <Button
                     color="dark"
-                    style={{marginBottom: '2rem'}}
+                    style={{marginBottom: '1rem'}}
                     onClick={this.toggle}
-                >Add Item</Button>
+                >
+                    Add New Emission Activity
+                </Button>
 
                 <Modal
                     isOpen={this.state.modal}
