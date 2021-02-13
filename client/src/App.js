@@ -6,6 +6,7 @@ import './App.css';
 import AppNavbar from './components/AppNavbar';
 import EmissionTable from './components/EmissionTable';
 import AddItemModal from './components/AddItemModal';
+import AppSidebar from './components/AppSidebar';
 import { Container } from 'reactstrap';
 
 import { Provider } from 'react-redux';
@@ -17,11 +18,7 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <AppNavbar />
-          <div class="sidebar">
-            <a class="active" href="">Dashboard</a>
-            <a href="">Profile</a>
-            <a href="">Contact</a>
-          </div>
+          <AppSidebar />
           <Container className="content">
               <AddItemModal />
               <EmissionTable />
