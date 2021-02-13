@@ -33,11 +33,11 @@ class EmissionTable extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {items.map(({ id, name, description, transport, distance, emissions, date }, index) => (
+                        {items.map(({ _id, name, description, transport, distance, emissions, date }, index) => (
                             <tr>
                                 <th>
                                     <Button 
-                                        onClick={this.handleDeleteItem.bind(this, id)}
+                                        onClick={this.handleDeleteItem.bind(this, _id)}
                                     >
                                         &times;
                                     </Button>
