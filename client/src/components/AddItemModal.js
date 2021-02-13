@@ -17,7 +17,7 @@ class ItemModal extends Component {
     state = {
         modal: false, 
         name: '', 
-        description: '', 
+        description: 'No Description', 
         date: '',
         transport: '', 
         distance: null, 
@@ -75,7 +75,7 @@ class ItemModal extends Component {
     resetState = () => {
         this.setState({
             name: '', 
-            description: '', 
+            description: 'No Description', 
             date: '',
             transport: '', 
             distance: null, 
@@ -254,7 +254,7 @@ class ItemModal extends Component {
                                 type="number" 
                                 name="distance" 
                                 id="distance" 
-                                placeholder={0} 
+                                placeholder="" 
                                 onChange={this.onChange}
                                 valid={this.state.validate.distanceState}
                                 invalid={this.state.validate.distanceState === false}

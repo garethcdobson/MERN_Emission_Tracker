@@ -11,8 +11,8 @@ const ItemSchema = new Schema ({
         type: String,
     },
     date: {
-        type: Date,
-        default: Date.now,
+        type: String,
+        required: true,
     },
     transport: {
         type: String,
