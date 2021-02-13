@@ -23,7 +23,6 @@ class EmissionTable extends Component {
                 <Table striped size="sm" responsive hover>
                     <thead>
                         <tr>
-                            <th>Entry</th>
                             <th>Name</th>
                             <th>Description</th>
                             <th>Transport</th>
@@ -34,15 +33,14 @@ class EmissionTable extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {items.map(({ _id, name, description, transport, distance, emissions, date }, index) => (
+                        {items.map(({ _id, name, description, transport, distance, emissions, date }) => (
                             <tr>
-                                <td scope="row">{index + 1}</td>
                                 <td>{name}</td>
                                 <td>{description}</td>
                                 <td>{transport}</td>
                                 <td>{distance}</td>
                                 <td>{emissions}</td>
-                                <td>{date}</td>
+                                <td>{date.substring(0, 10)}</td>
                                 <td>
                                     <Button 
                                         onClick={this.handleDeleteItem.bind(this, _id)}

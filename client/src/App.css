@@ -66,16 +66,11 @@ div.content {
 .emission-table {
     padding: 2rem;
     background-color: white;
+    font-size: 0.9rem;
 }
 
-.table thead th {
+.table thead th, .table td, .table th {
     vertical-align: middle;
-    text-align: center;
-}
-
-.table td, .table th {
-    vertical-align: middle;
-    text-align: center;
 }
 
 .delete-item-button {
