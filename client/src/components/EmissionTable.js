@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import { Button, Container, Table } from 'reactstrap';
+import React, { Component } from 'react';
+import { Table } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../actions/itemActions';
 import PropTypes from 'prop-types';
-import trashIcon from '../assets/trash-icon.png';
+import RemoveItemModal from './RemoveItemModal';
 
 class EmissionTable extends Component {
 
@@ -42,12 +42,7 @@ class EmissionTable extends Component {
                                 <td>{emissions}</td>
                                 <td>{date.substring(0, 10)}</td>
                                 <td>
-                                    <Button 
-                                        onClick={this.handleDeleteItem.bind(this, _id)}
-                                        className="delete-item-button"
-                                    >
-                                        <img src={trashIcon} alt="delete item" height="30px" />
-                                    </Button>
+                                    <RemoveItemModal onRemoveItem={this.handleDeleteItem.bind(this, _id)}/>
                                 </td>
                             </tr>
                         ))}
