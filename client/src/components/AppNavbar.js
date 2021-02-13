@@ -21,7 +21,7 @@ const AppNavbar = (props) => {
 
   return (
     <div>
-      <Navbar color="dark" dark expand="md">
+      <Navbar fixed="top" color="dark" dark expand="md">
         <NavbarBrand href="/">Carbon Emission</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

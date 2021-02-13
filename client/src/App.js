@@ -17,9 +17,14 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <AppNavbar />
-          <Container>
-            <AddItemModal />
-            <EmissionTable />
+          <div class="sidebar">
+            <a class="active" href="">Dashboard</a>
+            <a href="">Profile</a>
+            <a href="">Contact</a>
+          </div>
+          <Container className="content">
+              <AddItemModal />
+              <EmissionTable />
           </Container>
         </div>
       </Provider>
