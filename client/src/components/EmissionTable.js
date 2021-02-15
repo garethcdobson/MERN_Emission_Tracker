@@ -46,7 +46,7 @@ class EmissionTable extends Component {
 
     handleLastClick = (e) => {
         e.preventDefault();
-        this.setCurrentPage(this.state.pagesCount);
+        this.setCurrentPage(this.state.pagesCount - 1);
     };
 
     handleNextClick = (e) => {
