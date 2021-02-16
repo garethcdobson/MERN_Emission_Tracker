@@ -12,6 +12,7 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addItem } from '../actions/itemActions';
+import transportTypes from '../helpers/transportData';
 
 class ItemModal extends Component {
     state = {
@@ -21,7 +22,6 @@ class ItemModal extends Component {
         date: '',
         transport: '', 
         distance: null, 
-        emissions: 0,
         validate: {
             nameState: null,
             dateState: null,
@@ -79,7 +79,6 @@ class ItemModal extends Component {
             date: '',
             transport: '', 
             distance: null, 
-            emissions: 0,
             validate: {
                 nameState: null,
                 dateState: null,
@@ -90,10 +89,18 @@ class ItemModal extends Component {
         });
     }
 
+    calculateEmissions = (transport, distance) => {
+        var getTransportData = transportTypes.filter(function (transportType) { return transportType.name === transport });
+
+        const calculatedEmissions = ((parseInt(distance) * getTransportData[0].emissions) / 1000);
+        
+        return calculatedEmissions;
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
 
-        const { name, description, transport, date, distance, emissions } = this.state;
+        const { name, description, transport, date, distance } = this.state;
 
         const newItem = {
             name: name,
@@ -101,7 +108,7 @@ class ItemModal extends Component {
             description: description, 
             transport: transport, 
             distance: distance, 
-            emissions: emissions,
+            emissions: this.calculateEmissions(transport, distance)
         };
 
         this.props.addItem(newItem);
@@ -233,15 +240,14 @@ class ItemModal extends Component {
                                 onChange={this.onChange}   
                                 valid={this.state.validate.transportState}
                                 invalid={this.state.validate.transportState === false}
+                                size="sm"
                                 multiple
                             >
-                                <option>Bicycle</option>
-                                <option>Car</option>
-                                <option>Electric Car</option>
-                                <option>Electric Bicycle / Scooter</option>
-                                <option>Plane</option>
-                                <option>Train</option>
-                                <option>Bus</option>
+                                {transportTypes.map(transport => {
+                                    return (
+                                        <option>{transport.name}</option>
+                                    )
+                                })}
                             </Input>
                             <FormFeedback valid></FormFeedback>
                             <FormFeedback invalid>
