@@ -92,7 +92,7 @@ class EmissionTable extends Component {
                     })}
                     </tbody>
                 </Table>
-                <Pagination>
+                <Pagination size="sm">
                     <PaginationItem disabled={currentPage <= 0}>
                         <PaginationLink onClick={this.handleFirstClick} first />
                     </PaginationItem>

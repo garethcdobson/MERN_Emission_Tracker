@@ -82,3 +82,13 @@ div.content {
 .delete-item-button:hover {
     background-color: #cacaca;
 }
+
+/* Table Pagination */
+.page-link, .page-link:hover {
+    color: #212529;
+}
+
+.page-item.active .page-link {
+    background-color: #4b4b4b;
+    border-color: #4b4b4b;
+}
