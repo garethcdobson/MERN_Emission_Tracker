@@ -78,6 +78,7 @@ class EmissionTable extends Component {
     render() {
         const { items } = this.props.item;
         const { currentPage, pageSize, pagesCount} = this.state;
+        const twoSuper = "2";
 
         return(
             <div className="emission-table">
@@ -88,7 +89,7 @@ class EmissionTable extends Component {
                         <th>Description</th>
                         <th>Transport</th>
                         <th>Distance (km)</th>
-                        <th>CO2 Emissions (kgs)</th>
+                        <th>CO<sub>2</sub> Emissions (kg)</th>
                         <th>Date</th>
                         <th></th>
                     </tr>
@@ -103,7 +104,7 @@ class EmissionTable extends Component {
                                 <td>{description}</td>
                                 <td>{transport}</td>
                                 <td>{distance}</td>
-                                <td>{emissions}</td>
+                                <td>{emissions.toFixed(2)}</td>
                                 <td>{date.substring(0, 10)}</td>
                                 <td>
                                     <RemoveItemModal onRemoveItem={this.handleDeleteItem.bind(this, _id)}/>
