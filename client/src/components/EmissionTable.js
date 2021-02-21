@@ -78,7 +78,6 @@ class EmissionTable extends Component {
     render() {
         const { items } = this.props.item;
         const { currentPage, pageSize, pagesCount} = this.state;
-        const twoSuper = "2";
 
         return(
             <div className="emission-table">
