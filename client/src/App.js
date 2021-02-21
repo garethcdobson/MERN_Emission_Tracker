@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import AppNavbar from './components/AppNavbar';
+import EmissionGraph from './components/EmissionGraph';
 import EmissionTable from './components/EmissionTable';
 import AddItemModal from './components/AddItemModal';
 import AppSidebar from './components/AppSidebar';
@@ -23,6 +24,7 @@ class App extends Component {
               <div class="dashboard">
                 <AddItemModal />
                 <EmissionTable />
+                <EmissionGraph />
               </div>
           </Container>
         </div>

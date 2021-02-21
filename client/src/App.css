@@ -40,7 +40,6 @@ body {
 div.content {
     margin-left: 220px;
     padding: 1px 16px;
-    height: 1000px;
 }
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
@@ -91,4 +90,12 @@ div.content {
 .page-item.active .page-link {
     background-color: #4b4b4b;
     border-color: #4b4b4b;
+}
+
+/* Emissions Line Graph */
+.emission-graph {
+    background-color: white;
+    padding: 2rem;
+    margin: 1rem;
+    margin-bottom: 10rem;
 }
