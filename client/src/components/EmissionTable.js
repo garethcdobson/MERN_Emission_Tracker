@@ -10,17 +10,38 @@ class EmissionTable extends Component {
         super(props);
         this.state = {
             currentPage: 0,
-            pagesCount: 3,
-            pageSize: 3
+            pagesCount: 0,
+            pageSize: 5
         };
     };
 
     componentDidMount() {
         this.props.getItems();
+        this.handleItemsLoading();
     };
 
     handleDeleteItem = (id) => {
         this.props.deleteItem(id);
+    };
+
+    handleItemsLoading = () => {
+        const { items } = this.props.item;
+        if( items.length !== 0){
+            this.calculatePagesCount();
+        }
+        else{
+            setTimeout(this.handleItemsLoading, 500);
+        }
+    }
+
+    calculatePagesCount = () => {
+        const { items } = this.props.item;
+        const { pageSize } = this.state;
+
+        const pagesCount = Math.ceil(items.length / pageSize);
+        this.setState({
+            pagesCount: pagesCount
+        })
     };
 
     setCurrentPage = (page) => {
