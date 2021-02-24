@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import RegisterModal from './auth/RegisterModal';
+import Logout from './auth/Logout';
 import {
   Collapse,
   Navbar,
@@ -28,6 +30,12 @@ const AppNavbar = (props) => {
           <Nav className="mr-auto" navbar>
             <NavItem>
               <NavLink href="https://github.com/garethcdobson/MERN_Emission_Tracker">Project GitHub</NavLink>
+            </NavItem>
+            <NavItem>
+              <RegisterModal />
+            </NavItem>
+            <NavItem>
+              <Logout />
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
