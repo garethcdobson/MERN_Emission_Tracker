@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import RegisterModal from './auth/RegisterModal';
+import LoginModal from './auth/LoginModal';
 import Logout from './auth/Logout';
 import {
   Collapse,
@@ -33,6 +34,9 @@ const AppNavbar = (props) => {
             </NavItem>
             <NavItem>
               <RegisterModal />
+            </NavItem>
+            <NavItem>
+              <LoginModal />
             </NavItem>
             <NavItem>
               <Logout />
