@@ -1,6 +1,5 @@
 body {
-    padding-top: 55px;
-    background-color: #F3F4F9;
+    background-color: #040D21;
 }
 
 .dashboard {
@@ -98,4 +97,42 @@ div.content {
     padding: 2rem;
     margin: 1rem;
     margin-bottom: 10rem;
+}
+
+/* Login Page */
+.navbar {
+    background-color: #040D21;
+    color: white;
+}
+
+.navbar a {
+    color: white;
+}
+
+.login {
+    height: 100vh;
+    background-color: #E6E6E6;
+}
+
+.login-box {
+    background-color: #ececec;
+    padding: 4rem;
+    box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 2rem;
+}
+
+.login-box button {
+    margin-top: 1rem;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.register-button {
+    background-color: #EE6382;
+    border-color: #EE6382;
+}
+
+.login-button {
+    background-color: #040D21;
+    border-color: #040D21;
 }

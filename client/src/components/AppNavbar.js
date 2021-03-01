@@ -1,8 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import RegisterModal from './auth/RegisterModal';
-import LoginModal from './auth/LoginModal';
 import Logout from './auth/Logout';
 import {
   Collapse,
@@ -39,25 +37,14 @@ const AppNavbar = (props) => {
     </Fragment>
   );
 
-  const guestLinks = (
-    <Fragment>
-       <NavItem>
-        <RegisterModal />
-      </NavItem>
-      <NavItem>
-        <LoginModal />
-      </NavItem>
-    </Fragment>
-  );
-
   return (
     <div>
-      <Navbar fixed="top" color="dark" dark expand="md">
+      <Navbar fixed="top" expand="md">
         <NavbarBrand href="/">Carbon Emission</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            { isAuthenticated ? authLinks : guestLinks }
+            {isAuthenticated ? authLinks : null}
             <NavItem>
               <NavLink href="https://github.com/garethcdobson/MERN_Emission_Tracker">Project GitHub</NavLink>
             </NavItem>

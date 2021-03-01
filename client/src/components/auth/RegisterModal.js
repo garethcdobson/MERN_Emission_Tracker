@@ -8,7 +8,6 @@ import {
     ModalHeader, 
     ModalBody, 
     Input, 
-    NavLink,
     Alert
 } from 'reactstrap';
 import { connect } from 'react-redux';
@@ -83,9 +82,9 @@ class RegisterModal extends Component {
     render() {
         return(
             <div>
-                <NavLink onClick={this.toggle} href="#">
+                <Button className="register-button" onClick={this.toggle}>
                     Register
-                </NavLink>
+                </Button>
 
                 <Modal
                     isOpen={this.state.modal}
