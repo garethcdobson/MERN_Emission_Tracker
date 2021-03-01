@@ -15,9 +15,11 @@ import { addItem } from '../actions/itemActions';
 import transportTypes from '../helpers/transportData';
 
 class ItemModal extends Component {
+    user = this.props.auth.user.name;
+
     state = {
         modal: false, 
-        name: '', 
+        name: this.user, 
         description: 'No Description', 
         date: '',
         transport: '', 
@@ -44,10 +46,6 @@ class ItemModal extends Component {
             [e.target.name]: e.target.value
         });
 
-        if(e.target.name === 'name'){
-            this.validateName(e);
-        }
-
         if(e.target.name === 'date'){
             this.validateDate(e);
         }
@@ -62,7 +60,6 @@ class ItemModal extends Component {
 
         if(
             this.state.validate.dateState 
-            && this.state.validate.nameState 
             && this.state.validate.transportState 
             && this.state.validate.distanceState
         ){
@@ -74,7 +71,7 @@ class ItemModal extends Component {
 
     resetState = () => {
         this.setState({
-            name: '', 
+            name: this.user, 
             description: 'No Description', 
             date: '',
             transport: '', 
@@ -116,19 +113,6 @@ class ItemModal extends Component {
         this.resetState();
 
         this.toggle();
-    }
-
-    validateName(e) {
-        const nameRex = /^([ \u00c0-\u01ffa-zA-Z'\-])+$/;
-        const { validate } = this.state;
-    
-        if (nameRex.test(e.target.value)) {
-            validate.nameState = true
-        } else {
-            validate.nameState = false
-        }
-
-        this.setState({ validate })
     }
 
     validateDate(e) {
@@ -190,15 +174,13 @@ class ItemModal extends Component {
                     <ModalBody>
                     <Form onSubmit={this.onSubmit}>
                         <FormGroup>
-                            <Label for="name">Name *</Label>
+                            <Label for="name">Name</Label>
                             <Input 
                                 type="name" 
                                 name="name" 
                                 id="name" 
-                                placeholder="Name" 
-                                onChange={this.onChange} 
-                                valid={this.state.validate.nameState}
-                                invalid={this.state.validate.nameState === false}
+                                placeholder={this.user} 
+                                disabled
                             />
                             <FormFeedback valid></FormFeedback>
                             <FormFeedback invalid>
@@ -280,7 +262,8 @@ class ItemModal extends Component {
 }
 
 const mapStateToProps = state => ({
-    item: state.item
+    item: state.item,
+    auth: state.auth
 })
 
 export default connect(mapStateToProps, { addItem })(ItemModal);
