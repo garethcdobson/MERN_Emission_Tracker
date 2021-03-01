@@ -1,5 +1,5 @@
 body {
-    background-color: #040D21;
+    background-color: #E6E6E6;
 }
 
 .dashboard {
@@ -109,9 +109,14 @@ div.content {
     color: white;
 }
 
-.login {
+.login-left {
     height: 100vh;
     background-color: #E6E6E6;
+}
+
+.login-right {
+    height: 100vh;
+    background-color: #d1d1d1;
 }
 
 .login-box {

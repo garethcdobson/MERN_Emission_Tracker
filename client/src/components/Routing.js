@@ -3,13 +3,24 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Dashboard from "./Dashboard";
 import Login from "./Login";
+import Loading from './Loading';
 
 const Routing = ({ auth }) => {
     const { isAuthenticated } = auth;
 
+    const renderRoute = () => {
+      if(isAuthenticated){
+        return <Dashboard />
+      } else if(isAuthenticated === null){
+        return <Loading />
+      } else {
+        return <Login />
+      }
+    }
+
     return (
       <Fragment>
-        {isAuthenticated ? <Dashboard /> : <Login />}
+        {renderRoute()}
       </Fragment>
     );
 };

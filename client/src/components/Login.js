@@ -10,7 +10,7 @@ const Login = () => {
     return (
         <div>
             <div class="row">
-                <div class="login col-sm-6 row align-items-center justify-content-center">
+                <div class="login-left col-sm row align-items-center justify-content-center">
                     <div class="login-box">
                         <h1>Welcome To <strong>CarbonHub</strong></h1>
                         <RegisterModal />
@@ -18,7 +18,7 @@ const Login = () => {
                         <Button>What Is CarbonHub?</Button>
                     </div>
                 </div>
-                <img class="col-sm-6" src={worldIcon} alt=""></img>
+                <img class="login-right col-sm-6" src={worldIcon} alt=""></img>
             </div>
         </div>
     );
