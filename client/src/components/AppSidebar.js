@@ -1,11 +1,22 @@
 import React from 'react';
+import plantLogo from '../assets/logo.svg';
+import Logout from './auth/Logout';
+import AddItemModal from './AddItemModal';
 
 const AppSidebar = () => {
     return (
         <div class="sidebar">
-            <a class="active" href="">Dashboard</a>
-            <a href="">Profile</a>
-            <a href="">Contact</a>
+            <div class="sidebar-header">
+                <img src={plantLogo} alt="" height="40px" />
+                <h1>Carbon<strong>Hub</strong></h1>
+            </div>
+            <a class="active" href="/">Team Dashboard</a>
+            <a href="/">Personal Dashboard (Under Construction)</a>
+            <a href="/">About CarbonHub</a>
+            <a href="https://github.com/garethcdobson/MERN_Emission_Tracker">Project Github</a>
+            <a href="https://www.linkedin.com/in/gareth-dobson-b449b319b/">Author LinkedIn</a>
+            <Logout />
+            <AddItemModal />
         </div>
     );
 };

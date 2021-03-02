@@ -1,34 +1,18 @@
-import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import AppNavbar from './AppNavbar';
+import React from 'react';
 import EmissionGraph from './EmissionGraph';
 import EmissionTable from './EmissionTable';
-import AddItemModal from './AddItemModal';
 import AppSidebar from './AppSidebar';
 
 const Dashboard = () => {
     return (
-        <Fragment>
-            <AppNavbar />
+        <div class="dashboard">
             <AppSidebar />
-            <div className="content">
-                <div class="dashboard">
-                    <AddItemModal />
-                    <EmissionTable />
-                    <EmissionGraph />
-                </div>
+            <div class="content">
+                <EmissionGraph />
+                <EmissionTable />
             </div>
-        </Fragment>
-    );
+        </div>
+    )
 };
 
-Dashboard.propTypes = {
-  auth: PropTypes.object.isRequired
-}
-
-const mapStateToProps = state => ({
-  auth: state.auth,
-});
-
-export default connect(mapStateToProps, null)(Dashboard);
+export default Dashboard;

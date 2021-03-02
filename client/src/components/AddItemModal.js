@@ -159,8 +159,6 @@ class ItemModal extends Component {
         return(
             <div>
                 <Button
-                    color="dark"
-                    style={{marginBottom: '1rem'}}
                     onClick={this.toggle}
                 >
                     Add New Emission Activity

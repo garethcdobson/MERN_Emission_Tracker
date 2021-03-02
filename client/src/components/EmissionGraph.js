@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getItems } from '../actions/itemActions';
 import PropTypes from 'prop-types';
-import LineGraph from './LineGraph';
+import BarChart from './BarChart';
 
 class EmissionGraph extends Component {
     chartRef = React.createRef();
@@ -38,8 +38,9 @@ class EmissionGraph extends Component {
 
         if(items.length > 0){
             return (
-                <div>
-                    <LineGraph
+                <div className="dashboard-panel">
+                    <h2>Total Group Emissions</h2>
+                    <BarChart
                         data={this.getYearlyEmissions(items, "2020")}
                         labels={monthLabels} 
                     />

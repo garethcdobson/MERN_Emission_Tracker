@@ -17,7 +17,7 @@ const RemoveItemModal = (props) => {
     return (
         <div>
             <Button onClick={toggle} className="delete-item-button">
-                <img src={trashIcon} alt="delete item" height="30px" />
+                <img src={trashIcon} alt="delete item" height="25px" />
             </Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalBody>

@@ -80,8 +80,9 @@ class EmissionTable extends Component {
         const { currentPage, pageSize, pagesCount} = this.state;
 
         return(
-            <div className="emission-table">
-                <Table striped size="sm" responsive hover>
+            <div className="dashboard-panel">
+                <h2>Emission Activity</h2>
+                <Table className="emission-table" responsive hover>
                 <thead>
                     <tr>
                         <th>Name</th>

@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import Chart from "chart.js";
 
-Chart.defaults.global.legend.display = false;
-Chart.defaults.global.elements.line.tension = 0;
-
-export default class LineGraph extends Component {
+export default class BarChart extends Component {
     chartRef = React.createRef();
 
     constructor(props) {
@@ -20,11 +17,11 @@ export default class LineGraph extends Component {
         const myChartRef = this.chartRef.current.getContext("2d");
 
         const gradient = myChartRef.createLinearGradient(0, 0, 0, 400);
-        gradient.addColorStop(1, '#afcae6');   
-        gradient.addColorStop(0, '#deeeff');
+        gradient.addColorStop(1, '#429A86');   
+        gradient.addColorStop(0, '#54C0A7');
         
         new Chart(myChartRef, {
-            type: "line",
+            type: "bar",
             data: {
                 labels: labels,
                 datasets: [
