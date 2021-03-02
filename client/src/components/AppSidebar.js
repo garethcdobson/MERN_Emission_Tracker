@@ -13,8 +13,8 @@ const AppSidebar = () => {
             <a class="active" href="/">Team Dashboard</a>
             <a href="/">Personal Dashboard (Under Construction)</a>
             <a href="/">About CarbonHub</a>
-            <a href="https://github.com/garethcdobson/MERN_Emission_Tracker">Project Github</a>
-            <a href="https://www.linkedin.com/in/gareth-dobson-b449b319b/">Author LinkedIn</a>
+            <a href="https://github.com/garethcdobson/MERN_Emission_Tracker" target="_blank" rel="noreferrer noopener">Project Github</a>
+            <a href="https://www.linkedin.com/in/gareth-dobson-b449b319b/" target="_blank" rel="noreferrer noopener">Author LinkedIn</a>
             <Logout />
             <AddItemModal />
         </div>
