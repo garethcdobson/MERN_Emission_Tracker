@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Form, FormGroup, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getItems } from '../actions/itemActions';
 import PropTypes from 'prop-types';
@@ -6,9 +7,22 @@ import BarChart from './BarChart';
 
 class EmissionGraph extends Component {
     chartRef = React.createRef();
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            year: new Date().getFullYear()
+        }
+    }
     
     componentDidMount() {
         this.props.getItems();
+    }
+
+    onChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
 
     getYearlyEmissions = (items, year) => {
@@ -34,14 +48,26 @@ class EmissionGraph extends Component {
 
     render() {
         const { items } = this.props.item;
+        const { year } = this.state;
+        console.log(items)
         const monthLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const yearRange = [2021, 2020];
 
         if(items.length > 0){
             return (
                 <div className="dashboard-panel">
                     <h2>Total Group Emissions</h2>
+                    <Form>
+                        <FormGroup>
+                            <Input type="select" name="year" id="year" onChange={this.onChange}>
+                                {yearRange.map(year => {
+                                    return <option>{year}</option>
+                                })}
+                            </Input>
+                        </FormGroup>
+                    </Form>
                     <BarChart
-                        data={this.getYearlyEmissions(items, "2020")}
+                        data={this.getYearlyEmissions(items, year)}
                         labels={monthLabels} 
                     />
                 </div>

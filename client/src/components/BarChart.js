@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
 import Chart from "chart.js";
 
+Chart.defaults.global.legend.display = false
+
 export default class BarChart extends Component {
     chartRef = React.createRef();
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            labels: this.props.labels,
-            data: this.props.data
-        }
-    };
     
     componentDidMount() {
-        const { data, labels } = this.state;
+       this.buildChart();
+    };
+
+    componentDidUpdate() {
+        this.buildChart();
+    };
+
+    buildChart = () => {
+        const { data, labels } = this.props;
         const myChartRef = this.chartRef.current.getContext("2d");
 
         const gradient = myChartRef.createLinearGradient(0, 0, 0, 400);
@@ -48,8 +50,8 @@ export default class BarChart extends Component {
                     }]
                 }    
             }
-        });
-    }
+        })
+    };
 
     render() {
         return (
@@ -60,5 +62,5 @@ export default class BarChart extends Component {
                 />
             </div>
         )
-    }
+    };
 }
