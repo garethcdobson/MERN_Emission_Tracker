@@ -59,7 +59,13 @@ class EmissionGraph extends Component {
                     <h2>Total Group Emissions</h2>
                     <Form>
                         <FormGroup>
-                            <Input type="select" name="year" id="year" onChange={this.onChange}>
+                            <Input 
+                                type="select" 
+                                name="year" 
+                                id="year" 
+                                className="year-input"
+                                onChange={this.onChange}
+                            >
                                 {yearRange.map(year => {
                                     return <option>{year}</option>
                                 })}
