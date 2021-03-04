@@ -21,8 +21,11 @@ export default class BarChart extends Component {
         const gradient = myChartRef.createLinearGradient(0, 0, 0, 400);
         gradient.addColorStop(1, '#429A86');   
         gradient.addColorStop(0, '#54C0A7');
+
+        if(window.myCharts !== undefined)
+        window.myCharts.destroy();
         
-        new Chart(myChartRef, {
+        window.myCharts = new Chart(myChartRef, {
             type: "bar",
             data: {
                 labels: labels,
@@ -51,7 +54,9 @@ export default class BarChart extends Component {
                 }    
             }
         })
-    };
+
+        return window.myCharts;
+    }
 
     render() {
         return (
@@ -62,5 +67,5 @@ export default class BarChart extends Component {
                 />
             </div>
         )
-    };
+    }
 }

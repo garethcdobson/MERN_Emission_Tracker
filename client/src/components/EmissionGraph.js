@@ -49,7 +49,6 @@ class EmissionGraph extends Component {
     render() {
         const { items } = this.props.item;
         const { year } = this.state;
-        console.log(items)
         const monthLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const yearRange = [2021, 2020];
 
@@ -65,6 +64,7 @@ class EmissionGraph extends Component {
                                 id="year" 
                                 className="year-input"
                                 onChange={this.onChange}
+                                value={year}
                             >
                                 {yearRange.map(year => {
                                     return <option>{year}</option>
