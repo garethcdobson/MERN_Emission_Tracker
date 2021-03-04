@@ -15,8 +15,8 @@ const AppSidebar = () => {
             <a href="/">About CarbonHub</a>
             <a href="https://github.com/garethcdobson/MERN_Emission_Tracker" target="_blank" rel="noreferrer noopener">Project Github</a>
             <a href="https://www.linkedin.com/in/gareth-dobson-b449b319b/" target="_blank" rel="noreferrer noopener">Author LinkedIn</a>
-            <Logout />
             <AddItemModal />
+            <Logout />
         </div>
     );
 };

@@ -1,23 +1,36 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState } from 'react';
+import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import { connect } from 'react-redux';
-import { NavLink } from 'reactstrap';
 import { logout } from '../../actions/authActions';
 import PropTypes from 'prop-types';
 
-export class Logout extends Component {
-    static propTypes = {
-        logout: PropTypes.func.isRequired
-    };
+const Logout = ({ logout }) => {
+    const [modal, setModal] = useState(false);
 
-    render() {
-        return (
-            <Fragment>
-                <NavLink onClick={this.props.logout} href="#">
-                    Logout
-                </NavLink>
-            </Fragment>
-        )
-    }
+    const toggle = () => setModal(!modal);
+
+    return (
+        <div>
+            <Button onClick={toggle}>
+                Logout
+            </Button>
+            <Modal isOpen={modal} toggle={toggle}>
+                <ModalBody>
+                    Are you sure you want to logout?
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="danger" onClick={logout}>
+                        Logout
+                    </Button>
+                <Button onClick={toggle}>Cancel</Button>
+                </ModalFooter>
+            </Modal>
+        </div>
+    );
+};
+
+Logout.propTypes = {
+    logout: PropTypes.func.isRequired
 }
 
 export default connect(null, { logout })(Logout);
