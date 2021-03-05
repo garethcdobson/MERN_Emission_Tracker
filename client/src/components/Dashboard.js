@@ -5,9 +5,9 @@ import AppSidebar from './AppSidebar';
 
 const Dashboard = () => {
     return (
-        <div class="dashboard">
+        <div className="dashboard">
             <AppSidebar />
-            <div class="content">
+            <div className="content">
                 <EmissionGraph />
                 <EmissionTable />
             </div>

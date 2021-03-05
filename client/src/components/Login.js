@@ -9,16 +9,16 @@ import { Button } from 'reactstrap';
 const Login = () => {
     return (
         <div>
-            <div class="row">
-                <div class="login-left col-sm row align-items-center justify-content-center">
-                    <div class="login-box">
+            <div className="row">
+                <div className="login-left col-sm row align-items-center justify-content-center">
+                    <div className="login-box">
                         <h1>Welcome To <strong>CarbonHub</strong></h1>
                         <RegisterModal />
                         <LoginModal />
                         <Button>What Is CarbonHub?</Button>
                     </div>
                 </div>
-                <img class="login-right col-sm-6" src={worldIcon} alt=""></img>
+                <img className="login-right col-sm-6" src={worldIcon} alt=""></img>
             </div>
         </div>
     );
