@@ -160,6 +160,7 @@ class ItemModal extends Component {
             <div>
                 <Button
                     onClick={this.toggle}
+                    id="add-item-button"
                 >
                     Add New Emission Activity
                 </Button>

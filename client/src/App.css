@@ -21,10 +21,13 @@ body {
 .sidebar button {
     width: 94%;
     margin: 3%;
-    margin-bottom: 0;
     padding: 1rem;
     color: #E6E6E6;
     background-color: #2b3242;
+}
+
+#add-item-button {
+    margin-bottom: 0;
 }
 
 .sidebar button:hover {
