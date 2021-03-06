@@ -9,7 +9,7 @@ The app is built with the **MERN** stack, utilising **React** on the front-end, 
 
 The app is hosted on **Heroku** and setup for deployment using **Git** and the **Heroku CLI**. 
 
-In addition to the core stack, the app makes use of **Reactstrap** components, **JSON Web Tokens** for user authentication and **bcrypt.js** for password hashing.
+The app makes use of **Reactstrap** components (in addition to custom components), **Chart.js** for interactive charts and graphs, **JSON Web Tokens** for user authentication and **bcrypt.js** for password hashing.
 
 ## Current Functionality
 
