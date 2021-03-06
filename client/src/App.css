@@ -137,6 +137,10 @@ div.content {
     color: white;
 }
 
+.row {
+    margin: 0;
+}
+
 .login-left {
     height: 100vh;
     background-color: #E6E6E6;
