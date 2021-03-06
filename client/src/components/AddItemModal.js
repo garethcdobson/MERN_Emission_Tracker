@@ -221,7 +221,7 @@ class ItemModal extends Component {
                                 onChange={this.onChange}   
                                 valid={this.state.validate.transportState}
                                 invalid={this.state.validate.transportState === false}
-                                size="sm"
+                                bsSize="sm"
                                 multiple
                             >
                                 {transportTypes.map(transport => {
