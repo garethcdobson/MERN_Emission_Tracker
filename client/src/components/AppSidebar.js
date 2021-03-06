@@ -7,7 +7,7 @@ const AppSidebar = () => {
     return (
         <div className="sidebar">
             <div className="sidebar-header">
-                <img src={plantLogo} alt="" height="40px" />
+                <img src={plantLogo} alt="CarbonHub Logo" height="40px" />
                 <h1>Carbon<strong>Hub</strong></h1>
             </div>
             <a className="active" href="/">Team Dashboard</a>

@@ -91,7 +91,7 @@ class EmissionTable extends Component {
                         <th>Distance (km)</th>
                         <th>CO<sub>2</sub> Emissions (kg)</th>
                         <th>Date</th>
-                        <th></th>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>

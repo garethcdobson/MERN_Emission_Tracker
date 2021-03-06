@@ -18,7 +18,7 @@ const Login = () => {
                         <Button>What Is CarbonHub?</Button>
                     </div>
                 </div>
-                <img className="login-right col-sm-6" src={worldIcon} alt=""></img>
+                <img className="login-right col-sm-6" src={worldIcon} alt="Nature Illustration"></img>
             </div>
         </div>
     );
