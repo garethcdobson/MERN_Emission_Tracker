@@ -28,6 +28,8 @@ The app makes use of **Reactstrap** components (in addition to custom components
 - Addition of unit / end-to-end tests
 - Personal emission dashboard
 - Additional charts / graphs for further data visualisation and analysis e.g. distance, transport types
+- Add 'What is CarbonHub / About CarbonHub' page to site, including information about how emissions are calculated
+- Implement SASS CSS preprocessor to better organise / improve scalability of CSS
 - The app is currently running as a demo for a single organisation instance (multi-instance architecture). I would like to redesign the app to make use of multi-tenant architecture, so that multiple organisations can login using the same URL and portal.
 
 ## Bugs / Issues
